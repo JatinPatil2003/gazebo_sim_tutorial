@@ -2,7 +2,9 @@
 <robot name="autonav" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find autonav_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find autonav_description)/urdf/autonav_gazebo.xacro" />
+<!-- <xacro:include filename="$(find autonav_description)/urdf/autonav_gazebo.xacro" /> -->
+<xacro:include filename="$(find autonav_description)/urdf/autonav_plugins.xacro" />
+
 
 <link name="base_footprint"/>
 
@@ -20,15 +22,14 @@
     <material name="black"/>
   </visual>
   <collision>
-    <!-- <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://autonav_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
-    </geometry> -->
-    <origin xyz="0.04 0 0.005" rpy="0 0 0"/>
-    <geometry>
-      <!-- <mesh filename="package://cube_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/> -->
-      <box size="0.20 0.18 0.01" />
     </geometry>
+    <!-- <origin xyz="0.04 0 0.005" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.20 0.18 0.01" />
+    </geometry> -->
   </collision>
 </link>
 
@@ -72,7 +73,7 @@
 <link name="right_wheel_1">
   <inertial>
     <origin xyz="-3.3364538596768883e-08 -0.017500170586145114 1.5158223017064376e-08" rpy="0 0 0"/>
-    <mass value="0.1635143859009559"/>
+    <mass value="1.1635143859009559"/>
     <inertia ixx="8.2e-05" iyy="0.000131" izz="8.2e-05" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
@@ -88,12 +89,13 @@
       <mesh filename="package://autonav_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
+  <mu>10.0</mu>
 </link>
 
 <link name="left_wheel_1">
   <inertial>
     <origin xyz="-1.4750377623972896e-09 0.017500000000000668 2.8030050856775457e-08" rpy="0 0 0"/>
-    <mass value="0.1635143859009559"/>
+    <mass value="1.1635143859009559"/>
     <inertia ixx="8.2e-05" iyy="0.000131" izz="8.2e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
@@ -109,6 +111,7 @@
       <mesh filename="package://autonav_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
+  <mu>10.0</mu>
 </link>
 
 <link name="lidar_1">
