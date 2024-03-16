@@ -26,11 +26,12 @@
     <geometry>
       <mesh filename="package://autonav_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <!-- <origin xyz="0.04 0 0.005" rpy="0 0 0"/>
+    <!-- <origin xyz="0.04 0 0.0055" rpy="0 0 0"/>
     <geometry>
       <box size="0.20 0.18 0.01" />
     </geometry> -->
   </collision>
+  <mu>0.0</mu>
 </link>
 
 <joint name="footprint2baselink" type="fixed">
@@ -89,7 +90,7 @@
       <mesh filename="package://autonav_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
-  <mu>10.0</mu>
+  <mu>5.0</mu>
 </link>
 
 <link name="left_wheel_1">
@@ -111,7 +112,7 @@
       <mesh filename="package://autonav_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
-  <mu>10.0</mu>
+  <mu>5.0</mu>
 </link>
 
 <link name="lidar_1">
@@ -166,14 +167,14 @@
   <origin xyz="-0.00075 -0.105 0.04" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="right_wheel_1"/>
-  <axis xyz="-0.0 1.0 0.0"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
 <joint name="base2left" type="continuous">
   <origin xyz="-0.00075 0.105 0.04" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="left_wheel_1"/>
-  <axis xyz="0.0 1.0 -0.0"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
 <joint name="base2lidar" type="fixed">

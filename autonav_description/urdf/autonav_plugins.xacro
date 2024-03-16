@@ -3,7 +3,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="autonav">
 
     <gazebo>
-        <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+        <!-- <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
             <render_engine>ogre2</render_engine>
         </plugin>
 
@@ -11,21 +11,25 @@
         </plugin>
 
         <plugin filename="ignition-gazebo-joint-state-publisher-system" name="ignition::gazebo::systems::JointStatePublisher">
-        </plugin>
+        </plugin> -->
 
         <plugin filename="ignition-gazebo-diff-drive-system" name="ignition::gazebo::systems::DiffDrive">
             <left_joint>base2left</left_joint>
-            <right_joint>base2rigth</right_joint>
-            <wheel_separation>0.21</wheel_separation>
-            <wheel_radius>0.04</wheel_radius>
+            <right_joint>base2right</right_joint>
+            <wheel_separation>1.2</wheel_separation>
+            <wheel_radius>0.1</wheel_radius>
             <odom_publish_frequency>30</odom_publish_frequency>
             <topic>/cmd_vel</topic>
+            <!-- <xacro:if value="${odometry_source == 'encoders'}">
+                <odom_topic>$(arg wheel_odom_topic)</odom_topic>
+                <tf_topic>/tf</tf_topic>
+            </xacro:if> -->
             <frame_id>odom</frame_id>
             <child_frame_id>base_link</child_frame_id>
         </plugin>
     </gazebo>
 
-    <gazebo>
+    <!-- <gazebo>
         <plugin filename="libignition-gazebo6-odometry-publisher-system"
             name="ignition::gazebo::systems::OdometryPublisher">
             <odom_frame>odom</odom_frame>
@@ -35,9 +39,9 @@
             <dimensions>2</dimensions>
             <odom_publish_frequency>10</odom_publish_frequency>
         </plugin>
-    </gazebo>
+    </gazebo> -->
 
-    <gazebo reference="lidar_1">
+    <!-- <gazebo reference="lidar_1">
         <sensor name='gpu_lidar' type='gpu_lidar'>
             <topic>scan</topic>
             <update_rate>30</update_rate>
@@ -65,6 +69,6 @@
             <alwaysOn>1</alwaysOn>
             <visualize>true</visualize>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
 </robot>
